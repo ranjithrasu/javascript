@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function amount(){
+            var x = document.getElementById("eb").value;
+            if(x<=100){
+                var amt = x*0;
+            document.getElementById("amount").innerHTML = amt;
+            }
+            else if(x>100 && x<=200){
+                var amt = 100*0 + (x-100)*1;
+                document.getElementById("amount").innerHTML = amt;
+            }
+            else if(x>200 && x<=300){
+                var amt = 100*0 +100*1 +(x-200)*2;
+                document.getElementById("amount").innerHTML = amt;
+            }
+            else if(x>300 && x<=400){
+                var amt = 100*0 +100*1 +100*2 +(x-300)*3;
+                document.getElementById("amount").innerHTML = amt;
+            }
+            else{
+                var amt = 100*0 +100*1 +100*2 +100*3 +(x-400)*5;
+                document.getElementById("amount").innerHTML = amt;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <label> No Of Units :</label>
+    <input type="number" placeholder="unit" id="eb">
+    <br>
+    <br>
+    <button onclick="amount()">submit</button>
+    <br>
+    <label >amount (RS) :</label>
+    <span id="amount"></span>
+</body>
+</html>

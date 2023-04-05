@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function s1() {
+        var a,b,c;
+        a = document.getElementsByClassName("raj")[0].value;
+        b = document.getElementsByClassName("raj")[1].value;
+        c = +a + +b ;
+        document.getElementById('raj').value = String(c);}
+        function s2() {
+        var a,b,c;
+        a = document.getElementsByClassName("raj")[0].value;
+        b = document.getElementsByClassName("raj")[1].value;
+        c = +a - +b ;
+        document.getElementById('raj').value = String(c);}
+        function s3() {
+        var a,b,c;
+        a = document.getElementsByClassName("raj")[0].value;
+        b = document.getElementsByClassName("raj")[1].value;
+        c = +a * +b ;
+        document.getElementById('raj').value = String(c);}
+        function s4() {
+        var a,b,c;
+        a =  document.getElementsByClassName("raj")[0].value;
+        b =  document.getElementsByClassName("raj")[1].value;
+        c = +a / +b ;
+        document.getElementById('raj').value = String(c);}
+        function s5() {
+        document.getElementsByClassName("raj")[0].value = '';
+        document.getElementsByClassName("raj")[1].value = '';
+        document.getElementById('raj').value = '';
+        }
+    </script>
+</head>
+<body>
+<div>
+    <label>CALCULATOR</label>
+    <input type="number" class="raj" placeholder="FIRST VALUE"> <br>
+    <input type="number" class="raj" placeholder="SECOND VALUE"> <br>
+    <input type="text" id="raj" placeholder="TOTAL" disabled>
+    <button onclick="s1()">+</button>
+    <button onclick="s2()">-</button> <br>
+    <button onclick="s3()">*</button>
+    <button onclick="s4()">/</button> <br>
+    <button onclick="s5()">reset</button>
+</div>
+</body>
+</html>
+<style>
+    div{
+        border: none;
+        padding: 10px;
+        width: 170px;
+        background-color: red;
+    }
+    #raj{
+        margin: 5px 0px;
+        background-color: rgb(211, 193, 193);}
+    .raj{
+        margin: 5px 0px;
+        background-color: rgb(211, 193, 193);}
+    button{
+        background:rgb(102, 228, 110);
+        width: 48%;
+        margin: 5px 0px;}
+</style>

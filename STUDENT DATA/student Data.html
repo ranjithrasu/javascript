@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><label>STUDENT INFORMATION</label></div>
+    <br>
+    <div>
+        <div class="inputedit"> <span class="labelinput">Name:</span>  <br>
+    <input type="text" placeholder="NAME" id="name"><br></div>
+    <div class="inputedit"><span class="labelinput"> AGE:</span> <br>
+    <input type="text" placeholder="AGE" id="age"><br></div>
+    <div class="inputedit"> <span class="labelinput">  PHONENUMBER:</span><br>
+    <input type="text"  placeholder="PHONENUMBER" id="pno"><br></div>
+    <BUtton id="save" onclick="save()">Add New</BUtton>
+</div>
+    <table>
+        <tr>
+            <th>NAME</th>
+            <th>AGE</th>
+            <th>PHONENUMBER</th>
+            <th>DELETE</th>
+            <th>EDIT</th>
+        </tr>
+        <tbody id="table"></tbody>
+    </table>
+    <script>
+        var data=[{
+            name:"raja",
+            age:25,
+            pno:1245789631
+        },
+        {   name:"ram",
+            age:30,
+            pno:1245789631},
+
+            {name:"rajesh",
+            age:28,
+            pno:1245789631}]
+        var temp = [];
+        for(i=0;i<data.length;i++){
+            temp.push(document.getElementById("table").innerHTML=`<tr><td>`+data[i].name+`</td><td>`+data[i].age+`</td><td>`+data[i].pno+`</td><td><button onclick="Delete(`+i+`)">Delete</button></td><td><button onclick="edit(`+i+`)">edit</button></td></tr>`);
+        }
+        document.getElementById("table").innerHTML=temp.join("");
+        
+        function Delete(intex){
+            var temp2=[];
+            data.splice(intex,1)
+            for(i=0;i<data.length;i++){
+            temp2.push(document.getElementById("table").innerHTML=`<tr><td>`+data[i].name+`</td><td>`+data[i].age+`</td><td>`+data[i].pno+`</td><td><button onclick="Delete(`+i+`)">Delete</button></td><td><button onclick="edit(`+i+`)">edit</button></td></tr>`);
+        }
+        document.getElementById("table").innerHTML=temp2.join("");
+        }
+        var isedit=false;
+        var editintex = 0;
+        function edit(intex){
+            editintex = intex
+            isedit=true;
+            document.getElementById("save").innerHTML=`ubdate`
+            document.getElementById("name").value = data[intex].name;
+            document.getElementById("age").value = data[intex].age;
+            document.getElementById("pno").value = data[intex].pno;
+        }
+       function save(){
+        if(document.getElementById("name").value && document.getElementById("age").value && document.getElementById("pno").value){
+            temp3=[];
+        var newdata ={
+            name:document.getElementById("name").value,
+            age:document.getElementById("age").value,
+            pno:document.getElementById("pno").value
+        }
+        if(isedit){
+            data[editintex]=newdata;
+        }else{
+            data.push(newdata);
+        }
+
+        for(i=0;i<data.length;i++){
+            temp3.push(document.getElementById("table").innerHTML=`<tr><td>`+data[i].name+`</td><td>`+data[i].age+`</td><td>`+data[i].pno+`</td><td><button onclick="Delete(`+i+`)">Delete</button></td><td><button onclick="edit(`+i+`)">edit</button></td></tr>`);
+        }
+        document.getElementById("table").innerHTML=temp3.join("");
+        document.getElementById("name").value=""
+        document.getElementById("age").value=""
+        document.getElementById("pno").value=""
+        document.getElementById("save").innerHTML=`ADD NEW`
+        isedit = false;
+        }
+        
+       }
+            </script>
+            <style>
+                body{
+                    text-align: center;
+                    background-color: aquamarine;
+                }
+                table{
+                    width: 50%;
+                    margin-left: 409px;
+                    margin-top: 40px;
+}
+label{
+    font-size: 25px;
+    color: brown;
+    font-weight: bold;
+    margin-top:  10px ;
+    margin-bottom:  10px ;
+}
+span{
+    margin:10px 0px;
+    font-size: 20px;
+    color: rgb(69, 42, 165);
+    font-weight: bold;
+}
+.inputedit{
+    padding-bottom: 10px;
+}
+input{
+    margin-top: 5px;
+    background-color: greenyellow;
+    font-size: 15px;
+}
+input:hover{
+    background-color: yellow;
+}
+button:hover{
+    background-color: green;
+}
+button{
+    padding: 5px;
+    background-color: rgb(255, 0, 217);
+    font-size: 15px;
+    font-weight: bold;
+}
+th{
+    font-size: 18px;
+    background-color: grey;
+}
+tbody{
+    background-color: gray;
+}
+            </style>
+</body>
+</html>

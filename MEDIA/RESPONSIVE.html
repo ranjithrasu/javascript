@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    #mytopnav{
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+    }
+    .topnav{background-color: brown;}
+    .left{
+        color: chartreuse;
+    }
+    .close-icon,.icon{
+        display: none;
+    }
+    .right a{
+        color:chartreuse ;
+        text-decoration: none;
+        margin: 5px 2px;
+    }
+    @media  screen and (max-width : 800px) {
+        .right a{display: none;}
+        .right .icon{display: block;
+            color: blue;
+        }
+        #topnav{background-color: black;}
+        .left{color:blue;}
+    }
+    .topnav.responsive .left{
+        display: none;
+    }
+    .topnav.responsive a.close-icon{
+        display: block;
+        color: rgb(255, 0, 0);
+    }
+    .topnav.responsive .right a{
+        display: block;
+    }
+    .topnav.responsive a.icon{
+        display: none;
+    }
+    .topnav.responsive{
+        background-color: black;
+    }   
+</style>
+</head>
+<body>
+    <div class="topnav" id="mytopnav">
+        <div class="left">
+            home
+
+        </div>
+        <div class="right">
+            <a href="home" >Home</a>
+            <a href="aboutus" >Aboutus</a>
+            <a href="contact" >Contact</a>
+            <a href="nav" >Nav</a>
+            <a href="javascript:void(0);" class="close-icon" onclick="nav ()">
+                <i class="fa fa-close"></i> </a>
+            <a href="javascript:void(0);" class="icon" onclick="nav ()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </div>
+</body>
+<script>
+function nav(){
+    var x = document.getElementById("mytopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    }
+    else {x.className = "topnav";}
+    }
+</script>
+</html>

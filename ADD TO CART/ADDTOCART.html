@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+<style>
+
+#body{
+    display: flex;
+    flex-wrap: wrap;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+}
+.r1{
+    display: inline-flex;
+}
+</style>
+
+    <div class="head">
+        <div id="home" onclick="back()"><i class="fa-solid fa-house"></i></div>
+        <div class="r1">
+            <div id="s1" onclick="cartview()"><i class="fa-solid fa-cart-shopping"></i></div>
+            <span id="count" >0</span>
+        </div>
+    </div>
+    
+    <div id="body"></div>
+    <div id="count2">total</div>
+    <script>
+        var student = [
+            {
+                Image:"https://i1.wp.com/dashboardcamerareviews.com/wp-content/uploads/Mini-0806-200px.jpg?ssl=1",
+                name:"mini",
+                price:20000,
+                id:1
+            },
+            {
+                Image:"https://tse1.mm.bing.net/th/id/OIP.U4nsz-yJrG6cfjfunj-RrwAAAA?pid=ImgDet&rs=1",
+                name:"mini2",
+                price:10000,
+                id:2
+            }
+        ]
+       var temp=[];
+     for (let index = 0; index < student.length; index++) {
+      temp.push(`<div><img src=`+student[index].Image+`><div>`+student[index].name+`</div><div>`+student[index].price+`</div><div><button onclick="addcart(`+index+`)"> add to cart</button></div></div>`)
+     }   
+     document.getElementById("body").innerHTML=temp.join("")
+     var temp1=[];
+     var cartcount = 0;
+     function addcart(index){
+      
+        var newprodect={
+            Image:student[index].Image,
+            name:student[index].name,
+            price:student[index].price,
+            id:student[index].id,
+            quantity:1
+        }
+        iscon=false
+        for(var j=0;j<temp1.length;j++){
+            if(temp1[j].id == newprodect.id){
+                iscon = true;
+                temp1[j].price += newprodect.price
+                temp1[j].quantity += 1
+            }
+        }
+        if(!iscon){
+            temp1.push(newprodect)
+        }
+          cartcount += 1
+        document.getElementById("count").innerHTML=cartcount;
+     }
+    var  cartamt=0;
+    function cartview(){
+       
+        var temp2=[];
+        for (let index = 0; index < temp1.length; index++){
+      temp2.push(`<div><img src="`+temp1[index].Image+`"/><div>`+temp1[index].name+`</div><div>`+temp1[index].price+`</div><div><button onclick="Remove(`+index+`)"> REMOVE</button></div><div> quantity`+temp1[index].quantity+`</div></div>`)
+      cartamt = cartamt + Number(temp1[index].price)
+    }  
+    document.getElementById("body").innerHTML=temp2.join("")
+    document.getElementById("count2").innerHTML="total amount"+cartamt;
+    }
+    function Remove(index){
+        var finaldata =[];
+        if(temp1[index].quantity > 1){
+            var reduceprice =temp1[index].price/temp1[index].quantity
+            temp1[index].price = temp1[index].price - reduceprice;
+            temp1[index].quantity =  temp1[index].quantity - 1;
+            
+    
+            for (let index = 0; index < temp1.length; index++){
+      finaldata.push(`<div><img src="`+temp1[index].Image+`"/><div>`+temp1[index].name+`</div><div>`+temp1[index].price+`</div><div><button onclick="Remove(`+index+`)"> REMOVE</button></div><div>`+temp1[index].quantity+`</div></div>`)
+      
+      document.getElementById("body").innerHTML=finaldata.join("")       
+    }
+        }
+        
+        else{ temp1.splice(index,1)
+        cartview();
+        document.getElementById("count").innerHTML = temp1.length;
+        if(temp1!=0){
+            document.getElementById("count").innerHTML = ""; 
+        }}
+        } 
+    function back(){
+        document.getElementById("body").innerHTML=temp.join("")
+    }
+    </script>
+</body>
+</html>
